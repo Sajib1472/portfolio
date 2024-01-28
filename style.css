@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Mukta:wght@600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Mukta', sans-serif;
+    background: #f4f4f4;
+    overflow-x: auto;
+    color: black;
+}
+
+.dark_mode {
+    background-color: #222;
+    color: #e6e6e6;
+}
+
+header {
+    left: 0;
+    position:fixed;
+    top:0;
+    width:100%;
+    padding: 20px;    
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.logo {
+    height: 40px;
+    width: 40px;
+    float: left;
+    margin-left: 40px;
+}
+
+.navbar a{
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-right: 20px;
+    color: black;
+}
+
+.navbar a:hover{
+    color: #d3d1d1;
+}
+
+#dark_img {
+    margin-right: 40px;
+    background-color: #f4f4f4;
+}
+
+.profile {
+    position:fixed;
+    top:15vh;
+    width:100%;
+    height: fit-content;
+    padding: 10px;    
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.profile_1 {
+    /* background-color: aqua; */
+    margin-left: 10%;
+}
+
+.profile_2 {
+    /* background-color: aqua; */
+    display: flex;
+    height: 400px;
+    width: 400px;
+    margin: auto 0;
+    position: relative;
+    top: 40px;
+}
+
+.profile_3 {
+    /* background-color: aqua; */
+    margin-right: 60px;
+    max-width: 300px;
+}
