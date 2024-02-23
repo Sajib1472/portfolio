@@ -1,33 +1,28 @@
-// var typed = new Typed(".typing", {
-//     strings: ["Teacher", "Researcher", "Photographer"],
-//     typeSpeed: 100,
-//     backSpeed: 60,
-//     loop: true
-// });
-var typed = new Typed(".typing", {
-    strings: ["Student","Photographer","Researcher"],
-    typeSpeed: 100,
-    backSpeed: 60,
-    loop: true
-});
+/* ---------- NAVIGATION BAR FUNCTION ---------- */
+function myMenuFunction() {
+    var menuBtn = document.getElementById("myNavMenu");
 
-function myFunction() {
-    var element = document.body;
-    element.classList.toggle("dark_mode");
- }
- // function myFunction (iconID){
- //     var element = document.body;
- //     element.classList.toggle("dark_mode");
- //     if( document.getElementById("dark_img").src == "./image/dark_mode_FILL.png"){
- //         document.getElementById("dark_img").src = "./image/light_mode_FILL.png";
- //     }
- //     else if( document.getElementById("dark_img").src == "1.png" ){
- //         document.getElementById("dark_img").src = "down.png";
- //     }
- // }
+    if(menuBtn.className === "nav-menu") {
+        menuBtn.className += " responsive";
+    } else {
+        menuBtn.className = "nav-menu";
+    }
+}
+/* ---------- ADD SHADOW ON NAVIGATION BAR ---------- */
+window.onscroll = function() {
+    headerShadow();
+};
 
- // $(document).ready(function(){
+function headerShadow() {
+    const navHeader = document.getElementById("header");
 
-
-
- // });
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        navHeader.style.boxShadow = "0 1px 6px rgba(0, 0, 0, 0.1)";
+        navHeader.style.height = "70px";
+        navHeader.style.lineHeight = "70px";
+    } else {
+        navHeader.style.boxShadow = "none";
+        navHeader.style.height = "90px";
+        navHeader.style.lineHeight = "90px";
+    }
+}
