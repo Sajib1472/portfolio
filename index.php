@@ -57,7 +57,7 @@
                         <p>Currently studying in Computer Science and Engineering at Khulna University of Engineering & Technology</p>
                     </div>
                     <div class="featured-text-btn">
-                        <button class="btn blue-btn">Hire Me</button>
+                        <!-- <button class="btn blue-btn">Hire Me</button> -->
                         <button class="btn">Download CV <i class="uil uil-file-alt"></i></button>
                     </div>
                     <div class="social_icons">
@@ -103,11 +103,28 @@
                                 <h3>Frontend</h3>
                             </div>
                             <div class="skills-list">
-                                <span>HTML</span>
-                                <span>CSS</span>
-                                <span>Javascript</span>
-                                <span>React</span>
-                                <span>Bootstrap</span>
+                            <?php
+                                $connection = mysqli_connect('localhost', 'root', '', 'portfolio_db');
+                                if (!$connection) {
+                                    die("Connection failed: " . mysqli_connect_error());
+                                }
+                                $show_query = "SELECT * FROM skill_table2";
+                                $show = mysqli_query($connection, $show_query);
+                                $count =  mysqli_num_rows($show);
+                                if ($count > 0) {
+                                    while ($row = mysqli_fetch_assoc($show)) {
+                                        $id =  $row["ID"];
+                                        $skill =  $row["frontend"];
+                                        if (!empty($skill)) {
+                            ?>
+                                    <span><?php echo $skill;?></span>
+                            <?php
+                                        }
+                                    }
+                                } else {
+                                    echo "No data in database.";
+                                }
+                            ?>
                             </div>
                         </div>
                         <div class="skills-box">
@@ -115,10 +132,28 @@
                                 <h3>Backend</h3>
                             </div>
                             <div class="skills-list">
-                                <span>JAVA</span>
-                                <span>Python</span>
-                                <span>C++</span>
-                                <span>PHP</span>
+                            <?php
+                                $connection = mysqli_connect('localhost', 'root', '', 'portfolio_db');
+                                if (!$connection) {
+                                    die("Connection failed: " . mysqli_connect_error());
+                                }
+                                $show_query = "SELECT * FROM skill_table2";
+                                $show = mysqli_query($connection, $show_query);
+                                $count =  mysqli_num_rows($show);
+                                if ($count > 0) {
+                                    while ($row = mysqli_fetch_assoc($show)) {
+                                        $id =  $row["ID"];
+                                        $skill =  $row["backend"];
+                                        if (!empty($skill)) {
+                            ?>
+                                    <span><?php echo $skill;?></span>
+                            <?php
+                                        }
+                                    }
+                                } else {
+                                    echo "No data in database.";
+                                }
+                            ?>
                             </div>
                         </div>
                         <div class="skills-box">
@@ -126,8 +161,28 @@
                                 <h3>Database</h3>
                             </div>
                             <div class="skills-list">
-                                <span>MySQL</span>
-                                <span>PostgreSQL</span>
+                            <?php
+                                $connection = mysqli_connect('localhost', 'root', '', 'portfolio_db');
+                                if (!$connection) {
+                                    die("Connection failed: " . mysqli_connect_error());
+                                }
+                                $show_query = "SELECT * FROM skill_table2";
+                                $show = mysqli_query($connection, $show_query);
+                                $count =  mysqli_num_rows($show);
+                                if ($count > 0) {
+                                    while ($row = mysqli_fetch_assoc($show)) {
+                                        $id =  $row["ID"];
+                                        $skill =  $row["database_language"];
+                                        if (!empty($skill)) {
+                            ?>
+                                    <span><?php echo $skill;?></span>
+                            <?php
+                                        }
+                                    }
+                                } else {
+                                    echo "No data in database.";
+                                }
+                            ?>
                             </div>
                         </div>
                     </div>
@@ -139,21 +194,34 @@
                     <h1>Projects</h1>
                 </div>
                 <div class="project-container">
+                    <?php
+                        $connection = mysqli_connect('localhost', 'root', '', 'portfolio_db');
+                        if (!$connection) {
+                            die("Connection failed: " . mysqli_connect_error());
+                        }
+                        $show_query = "SELECT * FROM project_table";
+                        $show = mysqli_query($connection, $show_query);
+                        $count =  mysqli_num_rows($show);
+                        if ($count > 0) {
+                            while ($row = mysqli_fetch_assoc($show)) {
+    
+                                $id =  $row["ID"];
+                                $title =  $row["title"];
+                                $name = $row["name"];
+                                if (!empty($name)) {
+                    ?>
                     <div class="project-box">
-                        <i class="uil uil-subway"></i>
-                        <h3>Object Oriented Programming</h3>
-                        <label>Railways reservation system</label>
+                        <h3><?php echo $title;?></h3>
+                        <label><?php echo $name;?></label>
                     </div>
-                    <div class="project-box">
-                        <i class="uil uil-list-ul"></i>
-                        <h3>Desktop Application</h3>
-                        <label>Task manager</label>
-                    </div>
-                    <div class="project-box">
-                        <i class="uil uil-ship"></i>
-                        <h3>Database</h3>
-                        <label>Ship dealership system</label>
-                    </div>
+                    <?php
+                                }
+                            }
+                        } else {
+                            echo "No data in database.";
+                        }
+                        mysqli_close($connection);
+                    ?>
                 </div>
             </section>
             <!-- CONTACT BOX-->
@@ -172,16 +240,18 @@
                    </div>
                    <div class="col">
                       <div class="form-control">
+                        <form action="insert_contact.php" method="POST">
                           <div class="form-inputs">
-                              <input type="text" class="input-field" placeholder="Name">
-                              <input type="text" class="input-field" placeholder="Email">
+                              <input type="text" class="input-field" placeholder="Name" name="username">
+                              <input type="text" class="input-field" placeholder="Email" name="email">
                           </div>
                           <div class="text-area">
-                              <textarea placeholder="Message"></textarea>
+                              <textarea placeholder="Message" name="message"></textarea>
                           </div>
                           <div class="form-button">
-                              <button class="btn">Send <i class="uil uil-message"></i></button>
+                              <button class="btn" name="submit" >Send <i class="uil uil-message"></i></button>
                           </div>
+                        </form>  
                       </div>
                    </div>
                 </div>
@@ -189,9 +259,6 @@
         </main>
         <!-- FOOTER -->
         <footer>
-            <!-- <div class="top-footer">
-                <p>Sajib Biswas</p>
-            </div> -->
             <div class="middle-footer">
                 <ul class="footer-menu">
                     <li class="footer_menu_list">
