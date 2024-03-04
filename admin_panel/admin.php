@@ -164,7 +164,7 @@
                 } else {
                     echo "No data in database.";
                 }
-            // mysqli_close($connection);
+            //mysqli_close($connection);
 
             if (isset($_GET['message'])) {
                 $message = htmlspecialchars($_GET['message']);
@@ -220,7 +220,7 @@
                             $id =  $row["ID"];
                             $title = $row["title"];
                             $name =  $row["name"];
-                            if (!empty($skill)) {
+                            if (!empty($title)) {
                     ?>
                     <tbody>
                         <tr>
